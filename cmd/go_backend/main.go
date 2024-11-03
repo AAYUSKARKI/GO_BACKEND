@@ -12,6 +12,7 @@ import (
 	"time"
 
 	"github.com/aayuskarki/go_backend/internal/config"
+	"github.com/aayuskarki/go_backend/internal/http/handlers/student"
 )
 
 func main() {
@@ -20,9 +21,7 @@ func main() {
 
 	// Set up router
 	router := http.NewServeMux()
-	router.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello World"))
-	})
+	router.HandleFunc("POST /api/students", student.New())
 
 	// Initialize HTTP server with loaded configuration
 	server := http.Server{
